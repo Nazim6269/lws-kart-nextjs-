@@ -18,8 +18,6 @@ const Landing = () => {
       <NewArrival />
       <Ads />
       <ProductList />
-      <Footer />
-      <Copyright />
     </div>
   );
 };

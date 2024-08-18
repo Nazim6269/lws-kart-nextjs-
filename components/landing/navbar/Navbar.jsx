@@ -99,7 +99,7 @@ const Navbar = () => {
                 Home
               </Link>
               <Link
-                href="pages/shop.html"
+                href="/shop"
                 className="text-gray-200 hover:text-white transition"
               >
                 Shop
