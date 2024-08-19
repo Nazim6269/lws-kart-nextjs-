@@ -1,12 +1,17 @@
-import productOne from '@/public/products/product1.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
   return (
     <div className="bg-white shadow rounded overflow-hidden group">
       <div className="relative">
-        <Image src={productOne} alt="product 1" className="w-full" />
+        <Image
+          src={product?.images[0]}
+          width={240}
+          height={160}
+          alt={product?.name}
+          className="w-full"
+        />
 
         <div
           className="absolute inset-0 bg-black bg-opacity-40 flex items-center 
@@ -31,12 +36,16 @@ const ProductCard = () => {
       <div className="pt-4 pb-3 px-4">
         <Link href="#">
           <h4 className="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-            Guyer Chair
+            {`${product?.name.substring(0, 17)}...`}
           </h4>
         </Link>
         <div className="flex items-baseline mb-1 space-x-2">
-          <p className="text-xl text-primary font-semibold">$45.00</p>
-          <p className="text-sm text-gray-400 line-through">$55.90</p>
+          <p className="text-xl text-primary font-semibold">
+            ${product?.discountPrice}
+          </p>
+          <p className="text-sm text-gray-400 line-through">
+            ${product?.regularPrice}
+          </p>
         </div>
         <div className="flex items-center">
           <div className="flex gap-1 text-sm text-yellow-400">

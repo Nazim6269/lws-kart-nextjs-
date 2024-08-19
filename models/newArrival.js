@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const productSchema = new Schema({
+const newArrivalSchema = new Schema({
   productId: {
     requried: true,
     type: String,
@@ -47,5 +47,5 @@ const productSchema = new Schema({
   },
 });
 
-export const productModel =
-  mongoose.models.products ?? mongoose.model('products', productSchema);
+export const newArrivalModel =
+  mongoose.models.products ?? mongoose.model('newArrival', newArrivalSchema);
