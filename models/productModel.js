@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const productSchema = new Schema({
   productId: {
-    requried: true,
+    required: true,
     type: String,
   },
   name: {
@@ -41,9 +41,13 @@ const productSchema = new Schema({
     required: true,
     type: Array,
   },
-  availablity: {
+  availability: {
     required: true,
     type: String,
+  },
+  ratings: {
+    required: false,
+    type: Number,
   },
 });
 

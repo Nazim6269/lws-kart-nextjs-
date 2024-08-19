@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const newArrivalSchema = new Schema({
   productId: {
-    requried: true,
+    required: true,
     type: String,
   },
   name: {
@@ -41,11 +41,11 @@ const newArrivalSchema = new Schema({
     required: true,
     type: Array,
   },
-  availablity: {
+  availability: {
     required: true,
     type: String,
   },
 });
 
 export const newArrivalModel =
-  mongoose.models.products ?? mongoose.model('newArrival', newArrivalSchema);
+  mongoose.models.arrivals ?? mongoose.model('arrivals', newArrivalSchema);
