@@ -2,7 +2,7 @@
 
 export default function Error({ error, reset }) {
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-4xl font-bold text-red-600">Settings Error</h1>
       <p className="mt-4">{error.message}</p>
       <button

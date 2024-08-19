@@ -33,8 +33,9 @@ const ProductCard = ({ product }) => {
           </Link>
         </div>
       </div>
+
       <div className="pt-4 pb-3 px-4">
-        <Link href="#">
+        <Link href={`/products/details/${product?.productId}`}>
           <h4 className="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
             {`${product?.name.substring(0, 17)}...`}
           </h4>
@@ -65,7 +66,9 @@ const ProductCard = ({ product }) => {
               <i className="fa-solid fa-star"></i>
             </span>
           </div>
-          <div className="text-xs text-gray-500 ml-3">(150)</div>
+          <div className="text-xs text-gray-500 ml-3">
+            {product?.averageRating}
+          </div>
         </div>
       </div>
       <Link

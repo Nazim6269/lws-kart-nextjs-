@@ -13,10 +13,10 @@ import CategoryCard from './CategoryCard';
 const Categories = async () => {
   const products = await getAllProducts();
   const categorizedProducts = getProductsByCategory(products);
-  console.log(categorizedProducts.length, 'cats');
+
   return (
     <div className="container py-16">
-      <h2 className="text-2xl font-medium text-gray-800 uppercase mb-6">
+      <h2 className="text-2xl font-bold text-gray-800 uppercase mb-6">
         shop by category
       </h2>
       <div className="grid grid-cols-3 gap-3">

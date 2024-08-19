@@ -6,19 +6,19 @@ import Images from './details/Images';
 import Info from './details/Info';
 import SocialIcons from './details/SocialIcons';
 
-const ProductDetails = () => {
+const ProductDetails = ({ product }) => {
   return (
     <div>
       <div className="container grid grid-cols-2 gap-6">
-        <Images />
+        <Images images={product?.images} />
         <div>
-          <Info />
+          <Info product={product} />
           <AmouontChange />
           <ButtonGroups />
           <SocialIcons />
         </div>
       </div>
-      <Description />
+      <Description description={product?.longDescription} />
     </div>
   );
 };
