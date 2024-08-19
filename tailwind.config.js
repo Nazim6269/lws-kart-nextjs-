@@ -18,7 +18,7 @@ module.exports = {
       padding: '1rem',
     },
     extend: {
-      backgroundImage: { 'banner-bg-image': "url('/banner-bg.jpg')" },
+      backgroundImage: { 'banner-image': "url('/banner-bg.jpg')" },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],

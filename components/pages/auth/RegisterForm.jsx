@@ -3,7 +3,7 @@ import Link from 'next/link';
 const RegisterForm = () => {
   return (
     <>
-      <form action="#" method="post" autocomplete="off">
+      <form action="#" method="post" autoComplete="off">
         <div className="space-y-2">
           <div>
             <label htmlFor="name" className="text-gray-600 mb-2 block">

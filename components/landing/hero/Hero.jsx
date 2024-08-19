@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <div className="bg-cover banner-bg-image bg-no-repeat bg-center py-36">
+    <div className="bg-cover bg-banner-image bg-no-repeat bg-center py-36">
       <div className="container">
         <h1 className="text-6xl text-gray-800 font-medium mb-4 capitalize">
           best collection for <br /> home decoration

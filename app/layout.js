@@ -4,17 +4,20 @@ import Navbar from '@/components/landing/navbar/Navbar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 
+import { connectMongo } from '@/service/mongoConnection';
 import Head from 'next/head';
 import Error from './error';
-import { afacad, roboto } from './font';
+import { roboto } from './font';
 import './globals.css';
 
 export const metadata = {
-  title: 'LWS - home',
+  title: 'LWSkart - home',
   description: 'A simple e-commerce app',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  await connectMongo();
+
   return (
     <html lang="en">
       <Head>
@@ -27,9 +30,7 @@ export default function RootLayout({ children }) {
       </Head>
       <body className={roboto.className}>
         <ErrorBoundary fallback={<Error />}>
-          <Navbar
-            style={{ fontFamily: 'var(--font-poppins)', fontStyle: 'italic' }}
-          />
+          <Navbar />
           <main>{children}</main>
           <Footer />
           <Copyright />

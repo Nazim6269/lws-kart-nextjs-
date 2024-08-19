@@ -7,9 +7,7 @@ const page = () => {
         <h2 className="text-2xl uppercase font-medium mb-1">
           Create an account
         </h2>
-        <p className="text-gray-600 mb-6 text-sm">
-          Register htmlFor new cosutumer
-        </p>
+        <p className="text-gray-600 mb-6 text-sm">Register for new cosutumer</p>
         <RegisterForm />
       </div>
     </div>

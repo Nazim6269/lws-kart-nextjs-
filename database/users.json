@@ -1,0 +1,60 @@
+[
+  {
+    "name": "test1",
+    "email": "test1@gmail.com",
+    "password": "12345",
+    "whishList": [
+      {
+        "productId": 1
+      },
+      {
+        "productId": 2
+      }
+    ],
+    "ratingList": [
+      {
+        "productId": 1
+      },
+      {
+        "productId": 2
+      }
+    ],
+    "orderedHistory": [
+      {
+        "productId": 2
+      },
+      {
+        "productId": 3
+      }
+    ]
+  },
+  {
+    "name": "test2",
+    "email": "test2@gmail.com",
+    "password": "12345",
+    "whishList": [
+      {
+        "productId": 1
+      },
+      {
+        "productId": 2
+      }
+    ],
+    "ratingList": [
+      {
+        "productId": 1
+      },
+      {
+        "productId": 2
+      }
+    ],
+    "orderedHistory": [
+      {
+        "productId": 2
+      },
+      {
+        "productId": 3
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
+import logo from '@/public/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '@/public/logo.svg';
 
 const Header = () => {
   return (
@@ -27,8 +27,8 @@ const Header = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <a
-            href="#"
+          <Link
+            href="/whishlist"
             className="text-center text-gray-700 hover:text-primary transition relative"
           >
             <div className="text-2xl">
@@ -38,9 +38,9 @@ const Header = () => {
             <div className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
               8
             </div>
-          </a>
+          </Link>
           <Link
-            href="#"
+            href="/checkout"
             className="text-center text-gray-700 hover:text-primary transition relative"
           >
             <div className="text-2xl">
@@ -52,7 +52,7 @@ const Header = () => {
             </div>
           </Link>
           <Link
-            href="#"
+            href="/account"
             className="text-center text-gray-700 hover:text-primary transition relative"
           >
             <div className="text-2xl">
