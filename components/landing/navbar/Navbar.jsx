@@ -1,3 +1,5 @@
+import { auth } from '@/auth';
+import Logout from '@/components/pages/auth/Logout';
 import bed2 from '@/public/icons/bed-2.svg';
 import bed from '@/public/icons/bed.svg';
 import office from '@/public/icons/office.svg';
@@ -7,7 +9,8 @@ import terrace from '@/public/icons/terrace.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await auth();
   return (
     <>
       <nav className="bg-gray-800">
@@ -117,12 +120,23 @@ const Navbar = () => {
                 Contact us
               </Link>
             </div>
-            <Link
-              href="/login"
-              className="text-gray-200 hover:text-white transition"
-            >
-              Login
-            </Link>
+            {session ? (
+              <div>
+                <span className="text-gray-200 hover:text-white transition">
+                  {session?.user?.name}
+                </span>
+                <Logout />
+              </div>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="text-gray-200 hover:text-white transition"
+                >
+                  Login
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>

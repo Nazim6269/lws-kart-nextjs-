@@ -1,6 +1,9 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+import FacebookProvider from 'next-auth/providers/facebook';
 import {
+  fbClientId,
+  fbClientSecret,
   googleClienSecret,
   googleClientId,
   nextAuthSecret,
@@ -11,6 +14,11 @@ const authOptions = {
     GoogleProvider({
       clientId: googleClientId,
       clientSecret: googleClienSecret,
+    }),
+
+    FacebookProvider({
+      clientId: fbClientId,
+      clientSecret: fbClientSecret,
     }),
   ],
   secret: nextAuthSecret,
