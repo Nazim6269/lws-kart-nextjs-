@@ -118,7 +118,7 @@ const Navbar = () => {
               </Link>
             </div>
             <Link
-              href="pages/login.html"
+              href="/login"
               className="text-gray-200 hover:text-white transition"
             >
               Login

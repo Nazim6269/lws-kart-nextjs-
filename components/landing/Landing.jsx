@@ -15,7 +15,7 @@ const Landing = () => {
       <Hero />
       <Features />
       <Categories />
-      <NewArrival />
+      <NewArrival fromDetails={false} />
       <Ads />
       <ProductList />
     </div>

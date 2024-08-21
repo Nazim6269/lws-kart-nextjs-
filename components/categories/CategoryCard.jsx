@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 const CategoryCard = ({ product }) => {
   return (
@@ -13,7 +12,7 @@ const CategoryCard = ({ product }) => {
         className="w-full"
       />
       <Link
-        href="#"
+        href={`/products/${product?.category}`}
         className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
       >
         {product?.category}

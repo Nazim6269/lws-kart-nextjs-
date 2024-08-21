@@ -1,18 +1,10 @@
 import { getAllProducts } from '@/database/queries/productsQuery';
-import catOne from '@/public/category/category-1.jpg';
-import catTwo from '@/public/category/category-2.jpg';
-import catThree from '@/public/category/category-3.jpg';
-import catFour from '@/public/category/category-4.jpg';
-import catFive from '@/public/category/category-5.jpg';
-import catSix from '@/public/category/category-6.jpg';
-import { getProductsByCategory } from '@/utils/product';
-import Image from 'next/image';
-import Link from 'next/link';
+import { getCategory } from '@/utils/product';
 import CategoryCard from './CategoryCard';
 
 const Categories = async () => {
   const products = await getAllProducts();
-  const categorizedProducts = getProductsByCategory(products);
+  const categorizedProducts = getCategory(products);
 
   return (
     <div className="container py-16">

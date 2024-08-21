@@ -5,12 +5,15 @@ import { getProductById } from '@/database/queries/productsQuery';
 
 const ProductDetailsPage = async ({ params: { id } }) => {
   const singleProduct = await getProductById(id);
-  //console.log(singleProduct, 'singleproduct');
   return (
     <div>
       <Breadcrubms />
       <ProductDetails product={singleProduct} />
-      <NewArrival />
+      <NewArrival
+        fromDetails={true}
+        category={singleProduct?.category}
+        id={id}
+      />
     </div>
   );
 };

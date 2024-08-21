@@ -1,4 +1,4 @@
-export const getProductsByCategory = (productsArray) => {
+export const getCategory = (productsArray) => {
   const categoryArray = [];
 
   const data = productsArray.reduce((acc, curr) => {

@@ -9,7 +9,12 @@ const getAllProducts = async () => {
 
 const getProductById = async (id) => {
   const data = await productModel.findOne({ productId: id }).lean();
-  console.log(data, 'data');
+
+  return data;
+};
+
+const getProductsByCategory = async (category) => {
+  const data = await productModel.find({ category: category }).lean();
 
   return data;
 };
@@ -20,4 +25,9 @@ const getNewArrivalProducts = async () => {
   return newArrivalData;
 };
 
-export { getAllProducts, getNewArrivalProducts, getProductById };
+export {
+  getAllProducts,
+  getNewArrivalProducts,
+  getProductById,
+  getProductsByCategory,
+};
