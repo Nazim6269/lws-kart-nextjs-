@@ -1,6 +1,8 @@
+import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import NextAuth from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
 import FacebookProvider from 'next-auth/providers/facebook';
+import GoogleProvider from 'next-auth/providers/google';
+import client from './lib/client';
 import {
   fbClientId,
   fbClientSecret,
@@ -10,6 +12,10 @@ import {
 } from './service/secret';
 
 const authOptions = {
+  adapter: MongoDBAdapter(client),
+  session: {
+    strategy: 'jwt',
+  },
   providers: [
     GoogleProvider({
       clientId: googleClientId,

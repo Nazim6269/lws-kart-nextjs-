@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Profile = () => {
+const Profile = ({ user }) => {
   return (
     <>
       <div className="shadow rounded bg-white px-4 pt-6 pb-8">
@@ -13,8 +13,8 @@ const Profile = () => {
           </Link>
         </div>
         <div className="space-y-1">
-          <h4 className="text-gray-700 font-medium">John Doe</h4>
-          <p className="text-gray-800">example@mail.com</p>
+          <h4 className="text-gray-700 font-medium">{user?.name}</h4>
+          <p className="text-gray-800">{user?.email}</p>
           <p className="text-gray-800">0811 8877 988</p>
         </div>
       </div>
