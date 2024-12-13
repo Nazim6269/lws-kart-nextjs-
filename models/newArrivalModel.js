@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema } from "mongoose";
 
 const newArrivalSchema = new Schema({
   productId: {
@@ -48,4 +48,4 @@ const newArrivalSchema = new Schema({
 });
 
 export const newArrivalModel =
-  mongoose.models.arrivals ?? mongoose.model('arrivals', newArrivalSchema);
+  mongoose.models?.arrivals ?? mongoose.model("arrivals", newArrivalSchema);

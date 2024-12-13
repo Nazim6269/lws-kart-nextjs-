@@ -1,14 +1,20 @@
-import { newArrivalModel } from '@/models/newArrivalModel';
-import { productModel } from '@/models/productModel';
+import { newArrivalModel } from "@/models/newArrivalModel";
+import { productModel } from "@/models/productModel";
 
 const getAllProducts = async () => {
   const data = await productModel.find().lean();
 
-  return data;
+  // Convert _id field and any other special fields to plain values (stringified)
+  const plainData = data.map((item) => ({
+    ...item,
+    _id: item._id.toString(),
+  }));
+
+  return plainData;
 };
 
 const getProductById = async (id) => {
-  const data = await productModel.findOne({ productId: id }).lean();
+  const data = await productModel.findOne({ productId: Number(id) }).lean();
 
   return data;
 };

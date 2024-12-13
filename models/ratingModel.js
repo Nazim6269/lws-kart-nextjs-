@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema } from "mongoose";
 
 const ratingSchema = new Schema({
   productId: {
@@ -16,4 +16,4 @@ const ratingSchema = new Schema({
 });
 
 export const ratingModel =
-  mongoose.models.ratings ?? mongoose.model('ratings', ratingSchema);
+  mongoose.models?.ratings ?? mongoose.model("ratings", ratingSchema);

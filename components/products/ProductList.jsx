@@ -1,5 +1,5 @@
-import { getAllProducts } from '@/database/queries/productsQuery';
-import ProductCard from './ProductCard';
+import { getAllProducts } from "@/database/queries/productsQuery";
+import ProductCard from "./ProductCard";
 
 const ProductList = async () => {
   const products = await getAllProducts();

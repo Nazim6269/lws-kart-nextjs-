@@ -1,6 +1,6 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-const SingleImage = ({ image }) => {
+const SingleImage = ({ image, onClick }) => {
   return (
     <Image
       src={image}
@@ -8,6 +8,7 @@ const SingleImage = ({ image }) => {
       height={50}
       alt="product2"
       className="w-full cursor-pointer border border-primary"
+      onClick={onClick}
     />
   );
 };

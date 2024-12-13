@@ -1,18 +1,19 @@
-import Copyright from '@/components/footer/Copyright';
-import Footer from '@/components/footer/Footer';
-import Navbar from '@/components/landing/navbar/Navbar';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
+import Copyright from "@/components/footer/Copyright";
+import Footer from "@/components/footer/Footer";
+import Navbar from "@/components/landing/navbar/Navbar";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 
-import { connectMongo } from '@/service/mongoConnection';
-import Head from 'next/head';
-import Error from './error';
-import { roboto } from './font';
-import './globals.css';
+import SessionProvider from "@/providers/SessionProvider";
+import { connectMongo } from "@/service/mongoConnection";
+import Head from "next/head";
+import Error from "./error";
+import { roboto } from "./font";
+import "./globals.css";
 
 export const metadata = {
-  title: 'LWSkart - home',
-  description: 'A simple e-commerce app',
+  title: "LWSkart - home",
+  description: "A simple e-commerce app",
 };
 
 export default async function RootLayout({ children }) {
