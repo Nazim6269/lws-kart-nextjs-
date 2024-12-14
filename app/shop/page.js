@@ -1,11 +1,13 @@
 import Breadcrubms from "@/components/breadcrumbs/Breadcrubms";
 import FilterCard from "@/components/filter/FilterCard";
+import Pagination from "@/components/pagination/Pagination";
 import ProductCard from "@/components/products/ProductCard";
 import { getAllProducts } from "@/database/queries/productsQuery";
 import Link from "next/link";
 
-const ShopPage = async () => {
-  const products = await getAllProducts();
+const ShopPage = async ({ searchParams }) => {
+  // const page = searchParams.page || 1;
+  const products = await getAllProducts(5, searchParams.page);
 
   return (
     <>
@@ -279,6 +281,7 @@ const ShopPage = async () => {
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
+          <Pagination length={products.length} />
         </div>
       </div>
     </>

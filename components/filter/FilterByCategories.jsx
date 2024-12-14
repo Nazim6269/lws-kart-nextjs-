@@ -1,5 +1,6 @@
 import { getAllProducts } from "@/database/queries/productsQuery";
 import { getCategory } from "@/utils/product";
+import FilterCategory from "./FilterCategory";
 
 const FilterByCategories = async () => {
   const products = await getAllProducts();
@@ -12,21 +13,7 @@ const FilterByCategories = async () => {
       </h3>
       <div className="space-y-2">
         {categoryArray?.map((item) => (
-          <div key={item?.productId} className="flex items-center">
-            <input
-              type="checkbox"
-              name="cat-1"
-              id="cat-1"
-              className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-            />
-            <label
-              htmlFor="cat-1"
-              className="text-gray-600 ml-3 cusror-pointer"
-            >
-              {item?.category}
-            </label>
-            <div className="ml-auto text-gray-600 text-sm">{`(${item?.productId})`}</div>
-          </div>
+          <FilterCategory key={item?.productId} item={item} />
         ))}
       </div>
     </div>

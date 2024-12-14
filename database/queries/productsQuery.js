@@ -1,8 +1,14 @@
 import { newArrivalModel } from "@/models/newArrivalModel";
 import { productModel } from "@/models/productModel";
 
-const getAllProducts = async () => {
-  const data = await productModel.find().lean();
+const getAllProducts = async (limit, page) => {
+  const skip = (page - 1) * limit;
+
+  const data = await productModel
+    .find()
+    .skip(skip ?? 0)
+    .limit(limit ?? 0)
+    .lean();
 
   // Convert _id field and any other special fields to plain values (stringified)
   const plainData = data.map((item) => ({
