@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import WhisListIcon from "../whishlist/WhisListIcon";
 
 const ProductCard = ({ product }) => {
   return (
@@ -24,13 +25,8 @@ const ProductCard = ({ product }) => {
           >
             <i className="fa-solid fa-magnifying-glass"></i>
           </Link>
-          <Link
-            href="#"
-            className="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-            title="add to wishlist"
-          >
-            <i className="fa-solid fa-heart"></i>
-          </Link>
+          {/* whisList icon */}
+          <WhisListIcon productId={product?.productId} />
         </div>
       </div>
 

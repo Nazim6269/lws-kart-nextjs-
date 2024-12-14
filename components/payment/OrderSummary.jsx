@@ -1,17 +1,19 @@
-import Link from 'next/link';
-import OrderedItem from './OrderedItem';
+import Link from "next/link";
+import OrderedItem from "./OrderedItem";
+import { getCartList } from "@/database/queries/productsQuery";
 
-const OrderSummary = () => {
+const OrderSummary = async () => {
+  const cartItems = await getCartList();
+
   return (
     <>
       <h4 className="text-gray-800 text-lg mb-4 font-medium uppercase">
         order summary
       </h4>
       <div className="space-y-2">
-        <OrderedItem />
-        <OrderedItem />
-        <OrderedItem />
-        <OrderedItem />
+        {cartItems?.map((item) => (
+          <OrderedItem key={item?.productId} orderedProduct={item} />
+        ))}
       </div>
 
       <div className="flex justify-between border-b border-gray-200 mt-1 text-gray-800 font-medium py-3 uppercas">
@@ -40,7 +42,7 @@ const OrderSummary = () => {
           htmlFor="aggrement"
           className="text-gray-600 ml-3 cursor-pointer text-sm"
         >
-          I agree to the{' '}
+          I agree to the{" "}
           <Link href="#" className="text-primary">
             terms & conditions
           </Link>

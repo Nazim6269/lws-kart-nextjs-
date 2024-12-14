@@ -28,7 +28,7 @@ const Pagination = ({ length }) => {
     }
   };
 
-  //this buttion will  handle next button
+  //this button will  handle next button
   const handleNextBtn = () => {
     if (currentPage < totalPages) {
       const nextPage = currentPage + 1;
@@ -36,6 +36,7 @@ const Pagination = ({ length }) => {
       updateSearchParams(nextPage);
     }
   };
+  //this button will handle page button
   const handleClick = (pageIndex) => {
     setCurrentPage(pageIndex);
     updateSearchParams(pageIndex);
@@ -60,7 +61,11 @@ const Pagination = ({ length }) => {
           <li key={index}>
             <button
               onClick={() => handleClick(index + 1)}
-              className="px-4 py-2 bg-primary text-blace rounded-lg hover:bg-primary"
+              className={`px-4 py-2 rounded-lg transition ${
+                currentPage === index + 1
+                  ? "bg-primary text-white"
+                  : "bg-white border text-black hover:bg-primary hover:text-white"
+              }`}
             >
               {index + 1}
             </button>
