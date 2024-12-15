@@ -1,22 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 import OrderedItem from "./OrderedItem";
 
+// SWR fetcher function
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 const OrderSummary = () => {
-  const [data, setData] = useState([]);
+  const { data, error } = useSWR("/auth/cart", fetcher);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/auth/cart"); // Fetch data from the API route
-      const items = await res.json();
-      setData(items); // Set the fetched data
-    };
-    fetchData();
-  }, []);
+  if (error) return <div>Failed to load cart items</div>;
+  if (!data) return <div>Loading cart items...</div>;
 
-  console.log(data);
+  if (data.length === 0) {
+    return <div>Your cart is empty</div>;
+  }
 
   const subTotal = data.reduce((acc, cur) => {
     acc = acc + cur.regularPrice * cur.quantity;

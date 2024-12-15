@@ -26,6 +26,10 @@
       {
         "productId": 3
       }
+    ],
+    "cartList": [
+      { "productId": 2, "quantity": 1 },
+      { "productId": 4, "quantity": 2 }
     ]
   },
   {
@@ -55,6 +59,10 @@
       {
         "productId": 3
       }
+    ],
+    "cartList": [
+      { "productId": 2, "quantity": 1 },
+      { "productId": 4, "quantity": 2 }
     ]
   }
 ]

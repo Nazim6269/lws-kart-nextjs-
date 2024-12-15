@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import WhisListIcon from "../whishlist/WhisListIcon";
+import AddToCartBtn from "./addToCartBtn/AddToCartBtn";
 
 const ProductCard = ({ product }) => {
   return (
@@ -67,12 +68,7 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
       </div>
-      <Link
-        href="#"
-        className="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
-      >
-        Add to cart
-      </Link>
+      <AddToCartBtn productId={product?.productId} />
     </div>
   );
 };

@@ -16,16 +16,22 @@ const userSchema = new Schema({
 
   whishList: {
     required: false,
-    type: Aray,
+    type: Array,
   },
   ratingList: {
     required: false,
-    type: Aray,
+    type: Array,
   },
   orderedHistory: {
     required: false,
-    type: Aray,
+    type: Array,
   },
+  cartList: [
+    {
+      productId: { type: String, required: true },
+      quantity: { type: Number, default: 1 },
+    },
+  ],
 });
 
 export const userModel =

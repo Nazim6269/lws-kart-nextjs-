@@ -7,7 +7,6 @@ export async function GET() {
 
     return NextResponse.json(cartItems);
   } catch (error) {
-    // Return an error response if something goes wrong
     return NextResponse.json(
       { error: "Failed to fetch cart items" },
       { status: 500 }
