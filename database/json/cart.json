@@ -14,6 +14,7 @@
     "category": "Earbuds",
     "brand": "Awei",
     "tags": ["wireless", "audio", "earbuds"],
-    "availability": "In Stock"
+    "availability": "In Stock",
+    "quantity": 2
   }
 ]

@@ -61,7 +61,11 @@ const cartSchema = new Schema({
     type: Number,
     default: 0,
   },
+  quantity: {
+    type: Number,
+    default: 1,
+  },
 });
 
 export const cartModel =
-  mongoose.models.carts ?? mongoose.model("carts", cartSchema);
+  mongoose.models.carts || mongoose.model("carts", cartSchema);

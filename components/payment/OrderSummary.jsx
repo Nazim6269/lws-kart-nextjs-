@@ -1,9 +1,27 @@
-import Link from "next/link";
-import OrderedItem from "./OrderedItem";
-import { getCartList } from "@/database/queries/productsQuery";
+"use client";
 
-const OrderSummary = async () => {
-  const cartItems = await getCartList();
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import OrderedItem from "./OrderedItem";
+
+const OrderSummary = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/auth/cart"); // Fetch data from the API route
+      const items = await res.json();
+      setData(items); // Set the fetched data
+    };
+    fetchData();
+  }, []);
+
+  console.log(data);
+
+  const subTotal = data.reduce((acc, cur) => {
+    acc = acc + cur.regularPrice * cur.quantity;
+    return acc;
+  }, 0);
 
   return (
     <>
@@ -11,14 +29,14 @@ const OrderSummary = async () => {
         order summary
       </h4>
       <div className="space-y-2">
-        {cartItems?.map((item) => (
+        {data?.map((item) => (
           <OrderedItem key={item?.productId} orderedProduct={item} />
         ))}
       </div>
 
       <div className="flex justify-between border-b border-gray-200 mt-1 text-gray-800 font-medium py-3 uppercas">
         <p>subtotal</p>
-        <p>$1280</p>
+        <p>${subTotal}</p>
       </div>
 
       <div className="flex justify-between border-b border-gray-200 mt-1 text-gray-800 font-medium py-3 uppercas">
@@ -28,7 +46,7 @@ const OrderSummary = async () => {
 
       <div className="flex justify-between text-gray-800 font-medium py-3 uppercas">
         <p className="font-semibold">Total</p>
-        <p>$1280</p>
+        <p>${subTotal}</p>
       </div>
 
       <div className="flex items-center mb-4 mt-2">
