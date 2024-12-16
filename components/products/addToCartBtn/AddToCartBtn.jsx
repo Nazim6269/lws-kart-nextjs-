@@ -18,6 +18,8 @@ const AddToCartBtn = ({ productId }) => {
 
       if (res.ok) {
         toast.success("Product added to cart!");
+      } else {
+        toast.error("Failed to add product to cart.");
       }
     } catch (error) {
       console.log(error, "error");
@@ -34,18 +36,6 @@ const AddToCartBtn = ({ productId }) => {
         disabled={loading}
       >
         {loading ? "Adding..." : "Add to cart"}
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
       </button>
     </>
   );

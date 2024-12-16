@@ -3,7 +3,7 @@ const { Schema, default: mongoose } = require("mongoose");
 const whishListSchema = new Schema({
   productId: {
     required: true,
-    type: Number,
+    type: String,
     unique: true,
   },
 

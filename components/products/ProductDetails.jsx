@@ -13,7 +13,7 @@ const ProductDetails = ({ product }) => {
         <div>
           <Info product={product} />
           <AmouontChange />
-          <ButtonGroups />
+          <ButtonGroups productId={product?.productId} />
           <SocialIcons />
         </div>
       </div>

@@ -10,6 +10,7 @@ import Head from "next/head";
 import Error from "./error";
 import { roboto } from "./font";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 
 export const metadata = {
   title: "LWSkart - home",
@@ -32,7 +33,21 @@ export default async function RootLayout({ children }) {
       <body className={roboto.className}>
         <ErrorBoundary fallback={<Error />}>
           <Navbar />
-          <main>{children}</main>
+          <main>
+            <ToastContainer
+              position="top-center"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+            {children}
+          </main>
           <Footer />
           <Copyright />
         </ErrorBoundary>

@@ -15,7 +15,7 @@ export async function POST(req) {
         { status: 401 }
       );
     }
-    await addToCart(session?.user?.email, productId);
+    await addToCart(session?.user, productId);
     return new Response(
       JSON.stringify({
         success: true,
