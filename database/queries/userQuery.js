@@ -2,6 +2,7 @@ import { userModel } from "@/models/userModel";
 
 const addToCart = async (user, productId) => {
   try {
+    console.log("productId", productId);
     let findUser = await userModel.findOne({ email: user?.email });
 
     if (findUser) {
@@ -33,4 +34,18 @@ const addToCart = async (user, productId) => {
   }
 };
 
-export { addToCart };
+const findUserFromDB = async (email) => {
+  try {
+    const user = await userModel.findOne({ email: email });
+
+    if (!user) {
+      return null;
+    }
+
+    return user;
+  } catch (error) {
+    throw new Error("Something went worng");
+  }
+};
+
+export { addToCart, findUserFromDB };

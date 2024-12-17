@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import AddToCartBtn from "../products/addToCartBtn/AddToCartBtn";
 
 const WhishListCard = ({ product }) => {
   return (
@@ -29,12 +29,7 @@ const WhishListCard = ({ product }) => {
       <div className="text-primary text-lg font-semibold">
         ${product?.regularPrice}
       </div>
-      <Link
-        href="#"
-        className="px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase font-roboto font-medium"
-      >
-        add to cart
-      </Link>
+      <AddToCartBtn productId={product?.productId} whishList={true} />
 
       <div className="text-gray-600 cursor-pointer hover:text-primary">
         <i className="fa-solid fa-trash"></i>

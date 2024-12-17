@@ -1,12 +1,44 @@
-import Link from 'next/link';
-import SocialLogin from './SocialLogin';
+"use client";
+
+import { loginAction } from "@/actions";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import SocialLogin from "./SocialLogin";
 
 const LoginForm = () => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const formData = new FormData(e.currentTarget);
+      const res = await loginAction(formData);
+
+      if (res?.error) {
+        toast.error("Some thing went wrong");
+      } else {
+        toast.success("User Logged in Successfully");
+        // window.location.href = "/checkout"; //It can be used instaed of router.push() & router.refresh(). which implement client side navigation and the refresh to change session
+
+        router.push("/checkout");
+        router.refresh();
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
-      <form action="#" method="post" autoComplete="off">
+      <form onSubmit={handleSubmit} method="post" autoComplete="off">
         <div className="space-y-2">
           <div>
+            <ToastContainer />
             <label htmlFor="email" className="text-gray-600 mb-2 block">
               Email address
             </label>
@@ -52,6 +84,7 @@ const LoginForm = () => {
         </div>
         <div className="mt-4">
           <button
+            disabled={loading}
             type="submit"
             className="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase font-roboto font-medium"
           >
@@ -71,7 +104,7 @@ const LoginForm = () => {
       {/* <!-- ./login with --> */}
 
       <p className="mt-4 text-center text-gray-600">
-        Don&apos;t have account?{' '}
+        Don&apos;t have account?{" "}
         <Link href="/register" className="text-primary">
           Register now
         </Link>
