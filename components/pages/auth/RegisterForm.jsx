@@ -1,10 +1,28 @@
-import Link from 'next/link';
-import SocialLogin from './SocialLogin';
+"use client";
+
+import { registerAction } from "@/actions";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import SocialLogin from "./SocialLogin";
 
 const RegisterForm = () => {
+  const router = useRouter();
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData(e.currentTarget);
+      const res = await registerAction(formData);
+
+      if (res.success) {
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
-      <form action="#" method="post" autoComplete="off">
+      <form onSubmit={handleRegister} method="post" autoComplete="off">
         <div className="space-y-2">
           <div>
             <label htmlFor="name" className="text-gray-600 mb-2 block">
@@ -42,7 +60,7 @@ const RegisterForm = () => {
               placeholder="*******"
             />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="confirm" className="text-gray-600 mb-2 block">
               Confirm password
             </label>
@@ -53,7 +71,7 @@ const RegisterForm = () => {
               className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
               placeholder="*******"
             />
-          </div>
+          </div> */}
         </div>
         <div className="mt-6">
           <div className="flex items-center">
@@ -67,7 +85,7 @@ const RegisterForm = () => {
               htmlFor="aggrement"
               className="text-gray-600 ml-3 cursor-pointer"
             >
-              I have read and agree to the{' '}
+              I have read and agree to the{" "}
               <a href="#" className="text-primary">
                 terms & conditions
               </a>
@@ -95,7 +113,7 @@ const RegisterForm = () => {
       {/* <!-- ./login with --> */}
 
       <p className="mt-4 text-center text-gray-600">
-        Already have account?{' '}
+        Already have account?{" "}
         <Link href="/login" className="text-primary">
           Login now
         </Link>
