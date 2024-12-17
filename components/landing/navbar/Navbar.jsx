@@ -30,6 +30,7 @@ const Navbar = async () => {
               style={{ width: "300px" }}
             >
               <Link
+                aria-label="Go to login page"
                 href="#"
                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
               >
@@ -41,6 +42,7 @@ const Navbar = async () => {
                 <span className="ml-6 text-gray-600 text-sm">Sofa</span>
               </Link>
               <Link
+                aria-label="Go to login page"
                 href="#"
                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
               >
@@ -52,6 +54,7 @@ const Navbar = async () => {
                 <span className="ml-6 text-gray-600 text-sm">Living Room</span>
               </Link>
               <Link
+                aria-label="Go to login page"
                 href="#"
                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
               >
@@ -59,6 +62,7 @@ const Navbar = async () => {
                 <span className="ml-6 text-gray-600 text-sm">Bedroom</span>
               </Link>
               <Link
+                aria-label="Go to login page"
                 href="#"
                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
               >
@@ -70,6 +74,7 @@ const Navbar = async () => {
                 <span className="ml-6 text-gray-600 text-sm">Outdoor</span>
               </Link>
               <Link
+                aria-label="Go to login page"
                 href="#"
                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
               >
@@ -81,6 +86,7 @@ const Navbar = async () => {
                 <span className="ml-6 text-gray-600 text-sm">Outdoor</span>
               </Link>
               <Link
+                aria-label="Go to login page"
                 href="#"
                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
               >
@@ -97,24 +103,28 @@ const Navbar = async () => {
           <div className="flex items-center justify-between flex-grow md:pl-12 py-5">
             <div className="flex items-center space-x-6 capitalize">
               <Link
+                aria-label="Go to login page"
                 href="/"
                 className="text-gray-200 hover:text-white transition"
               >
                 Home
               </Link>
               <Link
+                aria-label="Go to login page"
                 href={`/shop?page=${1}`}
                 className="text-gray-200 hover:text-white transition"
               >
                 Shop
               </Link>
               <Link
+                aria-label="Go to login page"
                 href="#"
                 className="text-gray-200 hover:text-white transition"
               >
                 About us
               </Link>
               <Link
+                aria-label="Go to login page"
                 href="#"
                 className="text-gray-200 hover:text-white transition"
               >
@@ -131,6 +141,7 @@ const Navbar = async () => {
             ) : (
               <>
                 <Link
+                  aria-label="Go to login page"
                   href="/login"
                   className="text-gray-200 hover:text-white transition"
                 >

@@ -20,6 +20,7 @@ const ProductCard = ({ product }) => {
       justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
         >
           <Link
+            aria-label="Go to login page"
             href={`/products/details/${product?.productId}`}
             className="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
             title="view product"
@@ -32,7 +33,10 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="pt-4 pb-3 px-4">
-        <Link href={`/products/details/${product?.productId}`}>
+        <Link
+          aria-label="Go to login page"
+          href={`/products/details/${product?.productId}`}
+        >
           <h4 className="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
             {`${product?.name.substring(0, 17)}...`}
           </h4>

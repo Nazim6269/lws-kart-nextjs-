@@ -78,7 +78,7 @@ const LoginForm = () => {
               Remember me
             </label>
           </div>
-          <Link href="#" className="text-primary">
+          <Link aria-label="Go to login page" href="#" className="text-primary">
             Forgot password?
           </Link>
         </div>
@@ -105,7 +105,11 @@ const LoginForm = () => {
 
       <p className="mt-4 text-center text-gray-600">
         Don&apos;t have account?{" "}
-        <Link href="/register" className="text-primary">
+        <Link
+          aria-label="Go to login page"
+          href="/register"
+          className="text-primary"
+        >
           Register now
         </Link>
       </p>

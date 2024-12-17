@@ -1,6 +1,6 @@
-import logo from '@/public/logo.svg';
-import Image from 'next/image';
-import Link from 'next/link';
+import logo from "@/public/logo.svg";
+import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -15,16 +15,32 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex space-x-5">
-            <Link href="#" className="text-gray-400 hover:text-gray-500">
+            <Link
+              aria-label="Go to login page"
+              href="#"
+              className="text-gray-400 hover:text-gray-500"
+            >
               <i className="fa-brands fa-facebook-square"></i>
             </Link>
-            <Link href="#" className="text-gray-400 hover:text-gray-500">
+            <Link
+              aria-label="Go to login page"
+              href="#"
+              className="text-gray-400 hover:text-gray-500"
+            >
               <i className="fa-brands fa-instagram-square"></i>
             </Link>
-            <Link href="#" className="text-gray-400 hover:text-gray-500">
+            <Link
+              aria-label="Go to login page"
+              href="#"
+              className="text-gray-400 hover:text-gray-500"
+            >
               <i className="fa-brands fa-twitter-square"></i>
             </Link>
-            <Link href="#" className="text-gray-400 hover:text-gray-500">
+            <Link
+              aria-label="Go to login page"
+              href="#"
+              className="text-gray-400 hover:text-gray-500"
+            >
               <i className="fa-brands fa-github-square"></i>
             </Link>
           </div>
@@ -38,24 +54,28 @@ const Footer = () => {
               </h3>
               <div className="mt-4 space-y-4">
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
                   Marketing
                 </Link>
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
                   Analitycs
                 </Link>
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
                   Commerce
                 </Link>
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
@@ -70,6 +90,7 @@ const Footer = () => {
               </h3>
               <div className="mt-4 space-y-4">
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
@@ -77,12 +98,14 @@ const Footer = () => {
                 </Link>
                 {/* <!-- <a href="#" className="text-base text-gray-500 hover:text-gray-900 block">Documentation</a> --> */}
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
                   Guides
                 </Link>
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
@@ -98,24 +121,28 @@ const Footer = () => {
               </h3>
               <div className="mt-4 space-y-4">
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
                   Marketing
                 </Link>
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
                   Analitycs
                 </Link>
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
                   Commerce
                 </Link>
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
@@ -130,6 +157,7 @@ const Footer = () => {
               </h3>
               <div className="mt-4 space-y-4">
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
@@ -137,12 +165,14 @@ const Footer = () => {
                 </Link>
                 {/* <!-- <a href="#" className="text-base text-gray-500 hover:text-gray-900 block">Documentation</a> --> */}
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >
                   Guides
                 </Link>
                 <Link
+                  aria-label="Go to login page"
                   href="#"
                   className="text-base text-gray-500 hover:text-gray-900 block"
                 >

@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from "next/link";
+import React from "react";
 
 const Billing = () => {
   return (
@@ -7,7 +7,7 @@ const Billing = () => {
       <div className="shadow rounded bg-white px-4 pt-6 pb-8">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-medium text-gray-800 text-lg">Billing address</h3>
-          <Link href="#" className="text-primary">
+          <Link aria-label="Go to login page" href="#" className="text-primary">
             Edit
           </Link>
         </div>

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const Profile = ({ user }) => {
   return (
@@ -8,7 +8,7 @@ const Profile = ({ user }) => {
           <h3 className="font-medium text-gray-800 text-lg">
             Personal Profile
           </h3>
-          <Link href="#" className="text-primary">
+          <Link aria-label="Go to login page" href="#" className="text-primary">
             Edit
           </Link>
         </div>

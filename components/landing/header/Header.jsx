@@ -1,4 +1,3 @@
-import Search from "@/components/search/Search";
 import logo from "@/public/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,12 +6,13 @@ const Header = () => {
   return (
     <header className="py-4 shadow-sm bg-white">
       <div className="container flex items-center justify-between">
-        <Link href="index.html">
+        <Link aria-label="Go to login page" href="index.html">
           <Image src={logo} alt="Logo" className="w-32" />
         </Link>
 
         <div className="flex items-center space-x-4">
           <Link
+            aria-label="Go to login page"
             href="/whishlist"
             className="text-center text-gray-700 hover:text-primary transition relative"
           >
@@ -25,6 +25,7 @@ const Header = () => {
             </div>
           </Link>
           <Link
+            aria-label="Go to login page"
             href="/checkout"
             className="text-center text-gray-700 hover:text-primary transition relative"
           >
@@ -37,6 +38,7 @@ const Header = () => {
             </div>
           </Link>
           <Link
+            aria-label="Go to login page"
             href="/account"
             className="text-center text-gray-700 hover:text-primary transition relative"
           >

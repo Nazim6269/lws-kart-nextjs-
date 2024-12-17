@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from "next/link";
+import React from "react";
 
 const Shipping = () => {
   return (
@@ -9,7 +9,7 @@ const Shipping = () => {
           <h3 className="font-medium text-gray-800 text-lg">
             Shipping address
           </h3>
-          <Link href="#" className="text-primary">
+          <Link aria-label="Go to login page" href="#" className="text-primary">
             Edit
           </Link>
         </div>
