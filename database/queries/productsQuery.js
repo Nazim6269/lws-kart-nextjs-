@@ -3,11 +3,11 @@ import { newArrivalModel } from "@/models/newArrivalModel";
 import { productModel } from "@/models/productModel";
 import { whishListModel } from "@/models/whishListModel";
 
-const getAllProducts = async (limit, page) => {
+const getAllProducts = async (limit, page,categoryArray=[]) => {
   const skip = (page - 1) * limit;
-
+ const filter= categoryArray.length >0? {category:{$in:categoryArray}}:{}
   const data = await productModel
-    .find()
+    .find(filter)
     .skip(skip ?? 0)
     .limit(limit ?? 0)
     .lean();
@@ -87,5 +87,6 @@ export {
   getNewArrivalProducts,
   getProductById,
   getProductsByCategory,
-  getWhishList,
+  getWhishList
 };
+

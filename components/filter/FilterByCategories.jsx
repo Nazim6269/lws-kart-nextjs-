@@ -1,10 +1,14 @@
-import { getAllProducts } from "@/database/queries/productsQuery";
+
+
 import { getCategory } from "@/utils/product";
 import FilterCategory from "./FilterCategory";
 
-const FilterByCategories = async () => {
-  const products = await getAllProducts();
-  const categoryArray = getCategory(products);
+const FilterByCategories =async  () => {
+  const products = await fetch("http://localhost:3000/api/products")
+  const data = await products.json()
+  const categoryArray = getCategory(data);
+
+  
 
   return (
     <div>

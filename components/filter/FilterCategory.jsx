@@ -1,12 +1,34 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 const FilterCategory = ({ item }) => {
   const [checked, setChecked] = useState(false);
+  const searchParams= useSearchParams()
+  const router= useRouter()
+
 
   const handleChange = (e) => {
-    setChecked(e.target.checked);
+    const isChecked= e.target.checked
+    setChecked(isChecked)
+    
+
+    const currentCategories= searchParams.get("categories") ? searchParams.get("categories").split(",") : []
+   
+
+    const updatedCategories= isChecked? [...currentCategories,item.category]:currentCategories?.filter(cat => cat !== item.category)
+    
+    
+    const params= new URLSearchParams(searchParams)
+
+    if(updatedCategories.length >0){
+      params.set("categories",updatedCategories.join(","))
+    }else{
+      params.delete("categories")
+    }
+
+    router.push(`?${params.toString()}`);
   };
 
   return (
