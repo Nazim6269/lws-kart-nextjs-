@@ -1,30 +1,38 @@
-'use client'
+"use client";
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 const FilterByRange = () => {
-  const searchParams= useSearchParams();
-  
-  const router= useRouter()
-  const [range,setRange]=useState({})
-  const handleChange=  (e)=>{
-    const name=e.target.name;
+  const searchParams = useSearchParams();
 
-   const price=e.target.value
-   const params = new URLSearchParams(searchParams)
+  const router = useRouter();
+  const [range, setRange] = useState({ min: "min", max: "max" });
 
-if(name === "min"){
-  params.set("min",price)
-}
-if(name === "max"){
-params.set('max',price)
-}
-   
-   
-   router.replace(`?${params.toString()}`)
-   
-  }
+  // handle change function
+  const handleChange = (e) => {
+    let name = e.target.name;
+    const price = e.target.value;
+    setRange((prev) => ({ ...prev, [name]: price }));
+  };
+
+  //handle blur function
+  const handleBlur = () => {
+    const params = new URLSearchParams(searchParams);
+
+    if (range.min) {
+      params.set("min", range.min);
+    } else {
+      params.delete("min");
+    }
+    if (range.max) {
+      params.set("max", range.max);
+    } else {
+      params.delete("max");
+    }
+
+    router.replace(`?${params.toString()}`);
+  };
   return (
     <div className="pt-4">
       <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
@@ -37,15 +45,20 @@ params.set('max',price)
           id="min"
           className="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm"
           placeholder="min"
+          value={range.min}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
         <span className="mx-3 text-gray-500">-</span>
         <input
           type="number"
           name="max"
           id="max"
+          value={range.max}
           className="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm"
-          placeholder="max" onChange={handleChange}
+          placeholder="max"
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
       </div>
     </div>

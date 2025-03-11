@@ -3,25 +3,30 @@ import { newArrivalModel } from "@/models/newArrivalModel";
 import { productModel } from "@/models/productModel";
 import { whishListModel } from "@/models/whishListModel";
 
-const getAllProducts = async (limit, page=1,categoryArray=[],minPrice=0,maxPrice=1000000) => {
+const getAllProducts = async (
+  limit,
+  page = 1,
+  categoryArray = [],
+  minPrice = 0,
+  maxPrice = 1000000
+) => {
   const skip = (page - 1) * limit;
- const filter= categoryArray.length >0? {category:{$in:categoryArray.split(",")}}:{}
+  const filter =
+    categoryArray.length > 0
+      ? { category: { $in: categoryArray.split(",") } }
+      : {};
 
- if (minPrice !== undefined && maxPrice !== undefined) {
-  filter.regularPrice = { $gte: minPrice, $lte: Number(maxPrice) };
-} else if (minPrice !== undefined) {
-  filter.regularPrice = { $gte: Number(minPrice) };
-} else if (minPrice !== undefined) {
-  filter.regularPrice = { $lte: Number(maxPrice) };
-}
+  if (minPrice !== undefined && maxPrice !== undefined) {
+    filter.regularPrice = { $gte: Number(minPrice), $lte: Number(maxPrice) };
+  } else if (minPrice !== undefined) {
+    filter.regularPrice = { $gte: Number(minPrice) };
+  } else if (minPrice !== undefined) {
+    filter.regularPrice = { $lte: Number(maxPrice) };
+  }
+  //console.log(filter, "filter");
 
-
-  const data = await productModel
-    .find(filter)
-    .skip(skip )
-    .limit(limit )
-    .lean();
-
+  const data = await productModel.find(filter).skip(skip).limit(limit).lean();
+  //console.log(data.length, "data");
 
   // Convert _id field and any other special fields to plain values (stringified)
   const plainData = data.map((item) => ({
@@ -98,6 +103,5 @@ export {
   getNewArrivalProducts,
   getProductById,
   getProductsByCategory,
-  getWhishList
+  getWhishList,
 };
-

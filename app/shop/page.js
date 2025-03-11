@@ -4,35 +4,34 @@ import FilterCard from "@/components/filter/FilterCard";
 import Pagination from "@/components/pagination/Pagination";
 import ProductCard from "@/components/products/ProductCard";
 
-
-
 const ShopPage = async ({ searchParams }) => {
-  const categories = searchParams.categories? searchParams.categories.split(','):[] ;
-  const min= searchParams.min ||0 ;
-  const max= searchParams.max ||100000;
-  const page=searchParams.page ||1;
+  const categories = searchParams.categories
+    ? searchParams.categories.split(",")
+    : [];
+  const min = searchParams.min || 0;
+  const max = searchParams.max || 100000;
+  const page = searchParams.page || 1;
 
-  
-let data=[]
+  let data = [];
   try {
     const res = await fetch(
       `http://localhost:3000/api/products?categories=${categories}&page=${page}&min=${min}&max=${max}&limit=${5}`
     );
- 
+
     if (!res.ok) {
       throw new Error(`Failed to fetch: ${res.status}`);
     }
-  
-     const {products} = await res.json();
-     data=products
+
+    const { products } = await res.json();
+    data = products;
   } catch (error) {
     console.error("Fetch error:", error.message);
   }
 
-  return ( 
+  return (
     <>
-    {/* this component will delete category params when page refresh */}
-    <DeleteCategoriesFromURL /> 
+      {/* this component will delete category params when page refresh */}
+      <DeleteCategoriesFromURL />
       <Breadcrubms />
 
       <div className="container grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start">
@@ -48,23 +47,21 @@ let data=[]
           </button>
         </div>
 
-        
-
         {/* filtering card */}
         <FilterCard />
 
         {/* products list */}
         <div className="col-span-3">
           <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
-          {data?.length > 0 ? (
-          data.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))
-    ) : (
-      <p>No products found.</p>
-    )}
+            {data?.length > 0 ? (
+              data.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            ) : (
+              <p>No products found.</p>
+            )}
           </div>
-          <Pagination length={data.length ||0} />
+          <Pagination length={data.length || 0} />
         </div>
       </div>
     </>
