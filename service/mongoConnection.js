@@ -6,10 +6,7 @@ const connectMongo = async () => {
     if (mongoose.connections[0].readyState) {
       return;
     }
-    await mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(mongoURI);
 
     mongoose.connection.on("connected", () => {
       console.log("DB is connected successfully");

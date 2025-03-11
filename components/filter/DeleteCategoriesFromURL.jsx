@@ -14,6 +14,8 @@ const DeleteCategoriesFromURL = () => {
         currentParams.delete("categories");
         router.replace(`?${currentParams.toString()}`, { scroll: false });
       }
+
+      
     }, [router]);
   
     return null;

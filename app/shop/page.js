@@ -3,16 +3,33 @@ import DeleteCategoriesFromURL from "@/components/filter/DeleteCategoriesFromURL
 import FilterCard from "@/components/filter/FilterCard";
 import Pagination from "@/components/pagination/Pagination";
 import ProductCard from "@/components/products/ProductCard";
-import { getAllProducts } from "@/database/queries/productsQuery";
 
 
 
 const ShopPage = async ({ searchParams }) => {
-  const categories = searchParams.categories? searchParams.categories.split(','):[] 
-  
-  const products = await getAllProducts(5, searchParams.page,categories);
+  const categories = searchParams.categories? searchParams.categories.split(','):[] ;
+  const min= searchParams.min ||0 ;
+  const max= searchParams.max ||100000;
+  const page=searchParams.page ||1;
 
-  return (
+  
+let data=[]
+  try {
+    const res = await fetch(
+      `http://localhost:3000/api/products?categories=${categories}&page=${page}&min=${min}&max=${max}&limit=${5}`
+    );
+ 
+    if (!res.ok) {
+      throw new Error(`Failed to fetch: ${res.status}`);
+    }
+  
+     const {products} = await res.json();
+     data=products
+  } catch (error) {
+    console.error("Fetch error:", error.message);
+  }
+
+  return ( 
     <>
     {/* this component will delete category params when page refresh */}
     <DeleteCategoriesFromURL /> 
@@ -39,11 +56,15 @@ const ShopPage = async ({ searchParams }) => {
         {/* products list */}
         <div className="col-span-3">
           <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
-            {products?.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          {data?.length > 0 ? (
+          data.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))
+    ) : (
+      <p>No products found.</p>
+    )}
           </div>
-          <Pagination length={products.length} />
+          <Pagination length={data.length ||0} />
         </div>
       </div>
     </>
