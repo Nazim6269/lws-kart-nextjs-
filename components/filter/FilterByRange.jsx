@@ -7,7 +7,7 @@ const FilterByRange = () => {
   const searchParams = useSearchParams();
 
   const router = useRouter();
-  const [range, setRange] = useState({ min: "min", max: "max" });
+  const [range, setRange] = useState({ min: 0, max: 1000000 });
 
   // handle change function
   const handleChange = (e) => {

@@ -17,16 +17,15 @@ const getAllProducts = async (
       : {};
 
   if (minPrice !== undefined && maxPrice !== undefined) {
-    filter.regularPrice = { $gte: Number(minPrice), $lte: Number(maxPrice) };
+    filter.discountPrice = { $gte: Number(minPrice), $lte: Number(maxPrice) };
   } else if (minPrice !== undefined) {
-    filter.regularPrice = { $gte: Number(minPrice) };
+    filter.discountPrice = { $gte: Number(minPrice) };
   } else if (minPrice !== undefined) {
-    filter.regularPrice = { $lte: Number(maxPrice) };
+    filter.discountPrice = { $lte: Number(maxPrice) };
   }
-  //console.log(filter, "filter");
+  console.log(filter, "filter");
 
   const data = await productModel.find(filter).skip(skip).limit(limit).lean();
-  //console.log(data.length, "data");
 
   // Convert _id field and any other special fields to plain values (stringified)
   const plainData = data.map((item) => ({
