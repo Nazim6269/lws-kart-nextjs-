@@ -1,16 +1,25 @@
 import Breadcrubms from "@/components/breadcrumbs/Breadcrubms";
 import DeleteCategoriesFromURL from "@/components/filter/DeleteCategoriesFromURL";
 import FilterCard from "@/components/filter/FilterCard";
+import Sort from "@/components/filter/Sort";
 import Pagination from "@/components/pagination/Pagination";
 import ProductCard from "@/components/products/ProductCard";
 
+const options = [
+  { label: "Low to High", value: "asc" },
+  { label: "High to Low", value: "dsc" },
+  { label: "Newest Arrivals", value: "newest" },
+  { label: "Best Sellers", value: "bestsellers" },
+];
+
 const ShopPage = async ({ searchParams }) => {
-  const categories = searchParams.categories
+  const categories = (await searchParams.categories)
     ? searchParams.categories.split(",")
     : [];
-  const min = searchParams.min || 0;
-  const max = searchParams.max || 100000;
-  const page = searchParams.page || 1;
+  const min = (await searchParams.min) || 0;
+  const max = (await searchParams.max) || 100000;
+  const page = (await searchParams.page) || 1;
+  const sortTerm = (await searchParams.sort) || "defalut";
 
   let data = [];
   try {
@@ -24,6 +33,12 @@ const ShopPage = async ({ searchParams }) => {
 
     const { products } = await res.json();
     data = products;
+    // sorting algorithm
+    if (sortTerm === "asc") {
+      data = data.sort((a, b) => a.discountPrice - b.discountPrice);
+    } else if (sortTerm === "dsc") {
+      data = data.sort((a, b) => b.discountPrice - a.discountPrice);
+    }
   } catch (error) {
     console.error("Fetch error:", error.message);
   }
@@ -35,23 +50,16 @@ const ShopPage = async ({ searchParams }) => {
       <Breadcrubms />
 
       <div className="container grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start">
-        <div className="text-center md:hidden">
-          <button
-            className="text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 block md:hidden"
-            type="button"
-            data-drawer-target="drawer-example"
-            data-drawer-show="drawer-example"
-            aria-controls="drawer-example"
-          >
-            <ion-icon name="grid-outline"></ion-icon>
-          </button>
-        </div>
-
         {/* filtering card */}
         <FilterCard />
 
         {/* products list */}
         <div className="col-span-3">
+          {/* Sorting component */}
+          <div className="mb-3">
+            <Sort options={options} />
+          </div>
+
           <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
             {data?.length > 0 ? (
               data.map((product) => (
