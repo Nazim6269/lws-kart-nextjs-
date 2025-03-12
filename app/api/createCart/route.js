@@ -10,7 +10,7 @@ export async function POST(req) {
       return new Response(
         JSON.stringify({
           success: false,
-          message: "user not authenticated,Please register or login firs",
+          message: "user not authenticated,Please register or login first",
         }),
         { status: 401 }
       );

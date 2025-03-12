@@ -8,6 +8,7 @@ import sofa from "@/public/icons/sofa.svg";
 import terrace from "@/public/icons/terrace.svg";
 import Image from "next/image";
 import Link from "next/link";
+import HeaderLinks from "../header/HeaderLinks";
 
 const Navbar = async () => {
   const session = await auth();
@@ -101,6 +102,7 @@ const Navbar = async () => {
           </div>
 
           <div className="flex items-center justify-between flex-grow md:pl-12 py-5">
+            {/*navbar left side */}
             <div className="flex items-center space-x-6 capitalize">
               <Link
                 aria-label="Go to login page"
@@ -131,11 +133,11 @@ const Navbar = async () => {
                 Contact us
               </Link>
             </div>
+
+            {/* navbar right side */}
             {session ? (
-              <div>
-                <span className="text-gray-200 hover:text-white transition">
-                  {session?.user?.name}
-                </span>
+              <div className="flex justify-between items-center">
+                <HeaderLinks name={session?.user?.name} />
                 <Logout />
               </div>
             ) : (

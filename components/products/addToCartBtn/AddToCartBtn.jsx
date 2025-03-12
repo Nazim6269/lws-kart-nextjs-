@@ -27,6 +27,7 @@ const AddToCartBtn = ({ productId, whishList = false }) => {
       setLoading(false);
     }
   };
+
   return (
     <>
       {" "}

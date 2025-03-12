@@ -1,7 +1,7 @@
 import Image from "next/image";
 import AddToCartBtn from "../products/addToCartBtn/AddToCartBtn";
 
-const WhishListCard = ({ product }) => {
+const ListCard = ({ product, cart }) => {
   return (
     <div className="flex items-center justify-between border gap-6 p-4 border-gray-200 rounded">
       <div className="w-28">
@@ -29,7 +29,11 @@ const WhishListCard = ({ product }) => {
       <div className="text-primary text-lg font-semibold">
         ${product?.regularPrice}
       </div>
-      <AddToCartBtn productId={product?.productId} whishList={true} />
+      {!cart ? (
+        <AddToCartBtn productId={product?.productId} whishList={true} />
+      ) : (
+        ""
+      )}
 
       <div className="text-gray-600 cursor-pointer hover:text-primary">
         <i className="fa-solid fa-trash"></i>
@@ -38,4 +42,4 @@ const WhishListCard = ({ product }) => {
   );
 };
 
-export default WhishListCard;
+export default ListCard;
