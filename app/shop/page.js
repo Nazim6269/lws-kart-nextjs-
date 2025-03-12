@@ -4,6 +4,7 @@ import FilterCard from "@/components/filter/FilterCard";
 import Sort from "@/components/filter/Sort";
 import Pagination from "@/components/pagination/Pagination";
 import ProductCard from "@/components/products/ProductCard";
+import Search from "@/components/search/Search";
 
 const options = [
   { label: "Low to High", value: "asc" },
@@ -20,6 +21,7 @@ const ShopPage = async ({ searchParams }) => {
   const max = (await searchParams.max) || 100000;
   const page = (await searchParams.page) || 1;
   const sortTerm = (await searchParams.sort) || "defalut";
+  const searchTerm = (await searchParams.search) || "";
 
   let data = [];
   try {
@@ -33,11 +35,19 @@ const ShopPage = async ({ searchParams }) => {
 
     const { products } = await res.json();
     data = products;
+
     // sorting algorithm
     if (sortTerm === "asc") {
       data = data.sort((a, b) => a.discountPrice - b.discountPrice);
     } else if (sortTerm === "dsc") {
       data = data.sort((a, b) => b.discountPrice - a.discountPrice);
+    }
+
+    //searching algorithm
+    if (searchTerm) {
+      data = data.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     }
   } catch (error) {
     console.error("Fetch error:", error.message);
@@ -56,8 +66,9 @@ const ShopPage = async ({ searchParams }) => {
         {/* products list */}
         <div className="col-span-3">
           {/* Sorting component */}
-          <div className="mb-3">
+          <div className="mb-3 flex flex-col md:flex md:flex-row justify-between">
             <Sort options={options} />
+            <Search />
           </div>
 
           <div className="grid md:grid-cols-3 grid-cols-2 gap-6">

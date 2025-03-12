@@ -33,6 +33,7 @@ const FilterByRange = () => {
 
     router.replace(`?${params.toString()}`);
   };
+
   return (
     <div className="pt-4">
       <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
